@@ -89,8 +89,7 @@ int BinarySearch(int key, City arrayCity[], int left, int right)
  int i , result;
     i=0;
     result = -1;
-
-   
+  
 while(left <= right)
 {
 
