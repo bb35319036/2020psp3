@@ -68,7 +68,7 @@ int LinearSearch(int key, City arrayCity[], int size)
     i=0;
 
     result=-1; 
-    for(i=0; i < MAX_CITY; i++)
+    for(i=0; i < size; i++)
     {if(key == arrayCity[i].id)
         result = i;
     
