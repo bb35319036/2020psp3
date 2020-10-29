@@ -38,7 +38,7 @@ void ReleaseList(Node* pTop)
     int cn = 0;
 
     pNode = pTop;
-    
+
     while(pNode != NULL) {
         pTemp = pNode;
         pNode = pNode->pNext;
@@ -56,7 +56,7 @@ void PrintList(Node* pTop)
     Node* pNode;
     pNode = pTop;
     int cn = 0;
-    
+
     printf("===== Start Printing =====\n");
 
     while(pNode != NULL) {
@@ -73,11 +73,24 @@ void PrintList(Node* pTop)
 
 }
 
-Node* InsertNewNode(City newCity, Node* pNext)
+Node* InsertNewNode(City newCity, Node* pNext) //mainではcity top だがここではnewCIty　pNext
 {
+    Node* top = NULL;
+    int i ;                                                                                                                                                                      
+    Node*pNode = malloc(sizeof(Node));
+
+        pNode -> city = newCity;   //pNodeのcityの部分に新しい値（newCity）を格納
+        pNode -> pNext = pNext;      //pNodeのpNextの部分にtopを入れる、次のPnodeとつながるように
+        top = pNode; 
+
+    
+    return top;
+}
+
+
     //  ここを実装する
 
-}
+
 
 #ifdef CHALLENGE1
 int DeleteNodeAt(Node** ppNode, int cn)
@@ -97,9 +110,31 @@ int SearchCityByName(Node* pList, char* cityName, City* pCity)
 }
 #endif
 
-int SearchCityByID(Node* pList, int ID, City* pCity)
+int SearchCityByID(Node* pList, int ID, City *pCity)// pTop key &City
 {
-    // ここを実装する
+    int i,result;
+    result = -1;
+    i = 0;
+    Node*pNode;
+    pNode =pList;
+    while(pNode != NULL)  // for(i=0; i < MAX_CITY; i++)  
+    {  
+        if(pNode->city.id == ID) //Listのidと入力したIDが一致すると
+        {
+            *pCity = pNode -> city;//Listの中身を代入
+            result = i;
+            
+        }
+        else
+        {
+        
+        }
+    pNode = pNode->pNext;
+    
+    i = i + 1;   
+
+    }    
+    return result;   // ここを実装する
 
 }
 
@@ -129,7 +164,7 @@ int main(void)
         //  読み込んだ市町村データをリストの先頭に挿入し
         //  その先頭をpTopに入れる
         pTop = InsertNewNode(city, pTop);
-    
+
         cn++;
     }
 
@@ -170,7 +205,8 @@ int main(void)
 
     ReleaseList(pTop);
 
-    if(fclose(fp) == EOF){
+    if(fclose(fp) == EOF)
+    {
         fputs("file close error\n",stderr);
         exit(EXIT_FAILURE);
     }
