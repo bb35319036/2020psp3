@@ -32,7 +32,7 @@ while(start+pos< StrOriginal_len && pos<StrKey_len)//開始位置と比較位置
          
      }
      return NULL;
-}
+} 
 
 
    
