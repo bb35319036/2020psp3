@@ -71,7 +71,7 @@ for (i=0; i<=strlen(StrKey); i++)
     {   
             if(text[index]==key[key_index] ) //textの文字とkey文字を比較し一致している場合if文に入る
             {   
-                i++;
+                i++; 
                
                     if(i  == StrKey_len)    //次の比較位置へずらす前に比較回数（文字列すべて一致しているか）を参照
                      { 
