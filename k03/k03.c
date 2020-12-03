@@ -69,6 +69,7 @@ for (i=0; i<=strlen(StrKey); i++)
     
     while(index < StrOriginal_len )//indexが文字列より小さい場合ループする条件を置く
     {   
+        index2 = index;                      //最初の比較位置をindex2に格納
             if(text[index]==key[key_index] ) //textの文字とkey文字を比較し一致している場合if文に入る
             {   
                 i++; 
@@ -86,7 +87,7 @@ for (i=0; i<=strlen(StrKey); i++)
             else
             {
                 
-                     index2 = index +i;  //繰り返した回数分足せば比較開始場所が分かる
+        
                     index = index + table[text[index]];
                    
 
