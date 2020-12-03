@@ -57,27 +57,27 @@ for (i=0; i<=strlen(StrKey); i++)
 
   
 
-    int index=0,key_index=0;
+    int index=0,key_index=0,index2;
     int StrOriginal_len = strlen(StrOriginal);
     int StrKey_len = strlen(StrKey);
 
     index = StrKey_len ; //indexを文字列の後ろに設定
     key_index = StrKey_len-1 ;//終端文字から一つ後ろから比較するために-1
    
+    
     i=0;
-
-   
+    
     while(index < StrOriginal_len )//indexが文字列より小さい場合ループする条件を置く
     {   
             if(text[index]==key[key_index] ) //textの文字とkey文字を比較し一致している場合if文に入る
             {   
                 i++;
-                
-                if(i  == StrKey_len)    //次の比較位置へずらす前に比較回数（文字列すべて一致しているか）を参照
-                { 
-                    return &text[index]; //その時の一致した場所から後ろの文字を返す
-                    break;
-                }
+               
+                    if(i  == StrKey_len)    //次の比較位置へずらす前に比較回数（文字列すべて一致しているか）を参照
+                     { 
+                        return &text[index]; //その時の一致した場所から後ろの文字を返す
+                        break;
+                    }
                 
                 index = index-1;           //比較位置を一つ前へずらす
                 key_index = key_index - 1; 
@@ -85,10 +85,22 @@ for (i=0; i<=strlen(StrKey); i++)
             }
             else
             {
-            index = index + table[text[index]];     //indexをテーブルを参照にしずらす
-            key_index = StrKey_len-1;
-            
+                
+                     index2 = index +i;  //繰り返した回数分足せば比較開始場所が分かる
+                    index = index + table[text[index]];
+                   
+
+                if (index <= index2)  //比較開始場所と現在の比較場所を比較し同じか前だと比較開始場所に１足してindexを更新
+                {
+                    index = index2 +1;
+                }
+                
+    
+           
+    
             i=0;                                  //ここで文字列すべてが一致してないときのiのカウントが足されないように初期化           
+
+    
 
             }
 
@@ -96,6 +108,7 @@ for (i=0; i<=strlen(StrKey); i++)
     
 
     }  
+    
     return NULL;
     
      //  ここを実装する
