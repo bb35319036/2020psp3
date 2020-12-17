@@ -104,44 +104,47 @@ void BubbleSort(City arrayCity[], int size)
 
 }
 
-
+ 
 void QuickSort(City arrayCity[], int left, int right)
-{   
-
-    if(right-left>1) //要素数が1より大きい条件を置く
-        {
-            int i=0,j=0,pos=0;
+{ 
+    int i,j;
+   
+    if(right-left+1>1) //要素数が1より大きい条件を置く
+    {
+            i=left;
+            j=right;
             City pivot,tmp;
-                i=left;
-                j=right;
-                pivot=arrayCity[left];//左端の値をpivotとする
-
+               
+            pivot=arrayCity[left];//左端の値をpivotとする
+ 
             while(1)
-            {
-                while(pos<=right)//左から順番にpivotより大きい値を探してその場所をiに代入する
+            {  
+        
+                while(i<right)//左から順番にpivotより大きい値を探してその場所をiに代入する
                 {
-                    if(pivot.seafood < arrayCity[pos].seafood)
+                    if(pivot.seafood < arrayCity[i].seafood)
                     {
-                        i=pos;
+                        
                         break;
                     }
                     else
                     {   
-                        pos++;//比較場所を左から進めるため+1する
+                        i++;//比較場所を左から進めるため+1する
                     }
             
                 }
-                while(pos>=left)//右から順番にpivot以下の値を探してその場所をjに代入する
+                
+                while(j>left)//右から順番にpivot以下の値を探してその場所をjに代入する
                 {       
-                    pos=right;
-                    if(pivot.seafood >= arrayCity[pos].seafood)
+                    
+                    if(pivot.seafood >= arrayCity[j].seafood)
                     {
-                        j=pos;
+                        
                         break;
                     }   
                     else
                     {
-                        pos--;//比較場所を右から進めるため-1する
+                        j--;//比較場所を右から進めるため-1する
                     }
             
                 }
@@ -159,11 +162,14 @@ void QuickSort(City arrayCity[], int left, int right)
             tmp = arrayCity[left];//pivotとjの値を入れ替える
             arrayCity[left] = arrayCity[j];
             arrayCity[j] = tmp;
-
+        
             QuickSort(arrayCity,left,j-1); //再起処理を行いQuicksortを繰り返す
             QuickSort(arrayCity,j+1,right);
-        }
+    
+    }
+    
 }
+
 //  ここを実装する
 
 
@@ -202,12 +208,12 @@ int main(void)
 
     //  魚介類で並び替え   
     printf("===== Sorted by seafood =====\n");
-    //QuickSort(arrayCity, 0, MAX_CITY - 1);
-    //PrintArray(arrayCity, MAX_CITY);
+    QuickSort(arrayCity, 0, MAX_CITY - 1);
+    PrintArray(arrayCity, MAX_CITY);
    
 //    MergeSort(arrayCity, 0, MAX_CITY - 1);
 //    HeapSort(arrayCity, MAX_CITY);
-    PrintArray(arrayCity, MAX_CITY);
+    //PrintArray(arrayCity, MAX_CITY);
 
 
 
