@@ -67,7 +67,7 @@ for (i=0; i<=strlen(StrKey); i++)
     
     i=0;
     
-    while(index < StrOriginal_len )//indexが文字列より小さい場合ループする条件を置く
+    while(index <= StrOriginal_len )//indexが文字列より小さい場合ループする条件を置く
     {   
         index2 = index;                      //最初の比較位置をindex2に格納
             if(text[index]==key[key_index] ) //textの文字とkey文字を比較し一致している場合if文に入る

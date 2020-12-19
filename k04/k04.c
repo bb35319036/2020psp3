@@ -78,16 +78,99 @@ int LoadData(City arrayCity[])
 
 void BubbleSort(City arrayCity[], int size)
 {
+    int pos,cnt=1;
+    City tmp;
+        
+                  
+    while (cnt!=0)//cntが0じゃないときに繰り返す
+    { 
+        cnt = 0;//カウントを初期化
+            
+        for(pos=0; pos < size -1; pos++)//数値列の先頭から最後の比較場所まで繰り返す
+        { 
+           if(arrayCity[pos].total > arrayCity[pos+1].total) //totalを隣と比較し大きければ入れ替える。
+            {
+                tmp = arrayCity[pos];
+                arrayCity[pos] = arrayCity[pos+1];
+                arrayCity[pos+1] = tmp;
+                cnt++;//入れ替えた後cntを+1する
+            }
+        }
+    }
+
+
+
     //  ここを実装する
 
 }
 
-
+ 
 void QuickSort(City arrayCity[], int left, int right)
-{
-    //  ここを実装する
-
+{ 
+    int i,j,pivot;
+   
+    if(right-left+1>1) //要素数が1より大きい条件を置く
+    {
+            i=left;
+            j=right;
+            City tmp;
+               
+            pivot=arrayCity[left].seafood;//左端の値をpivotとする
+ 
+            while(1)
+            {  
+        
+                while(i<right)//左から順番にpivotより大きい値を探してその場所をiに代入する
+                {
+                    if(pivot < arrayCity[i].seafood)
+                    {
+                        
+                        break;
+                    }
+                    else
+                    {   
+                        i++;//比較場所を左から進めるため+1する
+                    }
+            
+                }
+                
+                while(j>left)//右から順番にpivot以下の値を探してその場所をjに代入する
+                {       
+                    
+                    if(pivot >= arrayCity[j].seafood)
+                    {
+                        
+                        break;
+                    }   
+                    else
+                    {
+                        j--;//比較場所を右から進めるため-1する
+                    }
+            
+                }
+                if(i>=j)
+                {
+                    break;//i>=jのときbreakする
+                }   
+                else
+                {
+                    tmp = arrayCity[i];//i>=jの条件に当てはまらないときiの場所の値とjの場所の値を入れ替える
+                    arrayCity[i] = arrayCity[j];
+                    arrayCity[j] = tmp;
+                }
+            }
+            tmp = arrayCity[left];//pivotとjの値を入れ替える
+            arrayCity[left] = arrayCity[j];
+            arrayCity[j] = tmp;
+        
+            QuickSort(arrayCity,left,j-1); //再起処理を行いQuicksortを繰り返す
+            QuickSort(arrayCity,j+1,right);
+    
+    }
+    
 }
+
+//  ここを実装する
 
 
 
@@ -130,12 +213,11 @@ int main(void)
    
 //    MergeSort(arrayCity, 0, MAX_CITY - 1);
 //    HeapSort(arrayCity, MAX_CITY);
-    PrintArray(arrayCity, MAX_CITY);
+    //PrintArray(arrayCity, MAX_CITY);
 
 
 
     //  後処理
     free(arrayCity);
-
     return 0;
 }
