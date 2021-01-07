@@ -88,7 +88,7 @@ for (i=0; i<=strlen(StrKey); i++)
             {
                 
         
-                    index = index + table[text[index]];
+                index = index + table[text[index]];
                    
 
                 if (index <= index2)  //比較開始場所と現在の比較場所を比較し同じか前だと比較開始場所に１足してindexを更新

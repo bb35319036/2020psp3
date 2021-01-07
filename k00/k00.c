@@ -2,27 +2,18 @@
 #define ARRAY_SIZE  7
 int main (void)
 {
-int array[ARRAY_SIZE]
-    ={1,5,3,8,2,4,6};
-int pos,result;
-int key = 3;
+    int a,b=0,c=0,d=0,e=0;
 
-result=-1;
+a= 2;
 
-for(pos=0; pos < ARRAY_SIZE; pos++)
-{
-    if(key==array[pos])//array[pos]はposが示す場所の中身の値
-{
-    result = pos;
-    break;//ループから抜ける
-}
-    else
-    {
+d=a+1;
+e=d;
+d=a;
+a=e;
+//b=a;
+//c=a+1;
 
-    }
-}
-
-printf("result=%d" ,result);
+printf("%d,%d" ,a,d);
 
 return 0;
 }
