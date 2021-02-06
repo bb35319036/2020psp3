@@ -77,7 +77,7 @@ typedef struct tagMenu{
 ```
 PS C:\Users\admin\Desktop\プログラミング演習Ⅲ\2020psp3\k06> gcc -o k06 k06.c -w
 PS C:\Users\admin\Desktop\プログラミング演習Ⅲ\2020psp3\k06> ./k06
-最大取得可能カロリー 1733Kcal
+最大取得可能カロリー 1796Kcal
 ```
 
 ## 修正履歴
